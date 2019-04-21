@@ -17,7 +17,7 @@ export class SpotifyService {
    const headers = new HttpHeaders({
      //El token solo dura una hora, habri que volver a generarlo en
      // https://developer.spotify.com/console/get-new-releases/
-     'Authorization': 'Bearer BQAB1oJk8T2QQ_WcWb_CVD3Yzrg7-sdPkEN-_Yo81vfaE5SH_gs3HQ2-4DlZW5tT3h7yC-ziMfBah5GiRGRCZtW9dw7k4rXZW6HOVUiMUfYhk_3X5Mi_kfqStJ0SOmkoDeV1l9Qk7pVVoyg',
+     'Authorization': 'Bearer BQCdAHSd47-KvpuUtP_HjnrotiRaHhoXfx5mqTybCtRTbD3H64_H6K_1HqQACQAf3yRILP3sm2KjNfLoN28pM-uvk87fwnTfdaPFv3Mme5b8RC_Wqbtp5TAtwUWFct0hVdwvQl7f8kZnch0',
    });
    return this.http.get(url, {headers});
  }
@@ -34,6 +34,11 @@ export class SpotifyService {
  getArtista (id: string){
    return this.getQuery(`artists/${id}`);
    // .pipe( map( data => data['artists'].items  ) ); Ya viene la info transformada, no hay que pasarla por el pipe
+ }
+
+ getTopTracks (id: string){
+   return this.getQuery(`artists/${id}/top-tracks?country=us`)
+   .pipe( map( data => data['tracks']  ) );
  }
 
 }
