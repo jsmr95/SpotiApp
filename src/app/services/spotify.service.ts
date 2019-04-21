@@ -14,8 +14,17 @@ export class SpotifyService {
   const headers = new HttpHeaders({
     //El token solo dura una hora, habri que volver a generarlo en
     // https://developer.spotify.com/console/get-new-releases/
-    'Authorization': 'Bearer BQCw_u1GINbdTgaJWxU9kqgdn3rb5a9xpFGl0siKrXPVnSjx7jtUes5vfTFuW258C8xnz2chadDCn8uurAwlLACjnRI9Km3kbcth_2abrYgWpulTLLwVe7Nf-VTBKWm_bGu1IpAEHbaBqAU',
+    'Authorization': 'Bearer BQDuUe3rf3V6n2_e-E8nDd15CSgdiZwcV19DftVAhxHcXt87ITIHC0LFWWj0Y6raSSqmDtkRrVOWVASG86GLYLEouHE-_j-8nAFo6eUvHRQEytXc5BI6nrq7tbJD3o3RtHJEkeSARcJKnaE',
   })
   return this.http.get('https://api.spotify.com/v1/browse/new-releases', {headers});
+ }
+
+ getArtista (termino: string){
+   const headers = new HttpHeaders({
+     //El token solo dura una hora, habri que volver a generarlo en
+     // https://developer.spotify.com/console/get-new-releases/
+     'Authorization': 'Bearer BQDuUe3rf3V6n2_e-E8nDd15CSgdiZwcV19DftVAhxHcXt87ITIHC0LFWWj0Y6raSSqmDtkRrVOWVASG86GLYLEouHE-_j-8nAFo6eUvHRQEytXc5BI6nrq7tbJD3o3RtHJEkeSARcJKnaE',
+   })
+   return this.http.get(`https://api.spotify.com/v1/search?q=${termino}&type=artist&limit=15`, {headers});
  }
 }
